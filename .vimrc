@@ -34,7 +34,7 @@ let mapleader=","
 
 " Editing behaviour {{{
 set showmode                    " always show what mode we're currently editing in
-set nowrap                      " don't wrap lines
+"set nowrap                      " don't wrap lines
 set tabstop=2                   " a tab is two spaces
 set softtabstop=2               " when hitting <BS>, pretend like a tab is removed, even if spaces
 set expandtab                   " expand tabs by default (overloadable per file type later)
@@ -45,6 +45,7 @@ set autoindent                  " always set autoindenting on
 set copyindent                  " copy the previous indentation on autoindenting
 set number                      " always show line numbers
 set showmatch                   " set show matching parenthesis
+set modelines=0
 "set ignorecase                  " ignore case when searching
 set smartcase                   " ignore case if search pattern is all lowercase,
                                 "    case-sensitive otherwise
@@ -148,7 +149,7 @@ set showcmd                     " show (partial) command in the last line of the
                                 "    this also shows visual selection info
 set nomodeline                  " disable mode lines (security measure)
 "set ttyfast                     " always use a fast terminal
-" set cursorline                  " underline the current line, for quick orientation
+"set cursorline                  " underline the current line, for quick orientation
 
 " Tame the quickfix window (open/close using ,f)
 nmap <silent> <leader>f :QFix<CR>
@@ -520,7 +521,9 @@ nnoremap <leader>5 yypVr^
 nnoremap <leader>6 yypVr"
 
 " set bg=dark
+set t_Co=256
 colorscheme kib_darktango
+let &colorcolumn=join(range(101,999),",")
 
 " Vertical and horizontal split open current path
 :noremap <Leader>v :vsp .<cr>
@@ -587,5 +590,9 @@ nnoremap <Leader>, :nohl<CR>
 " Fugitive
 nnoremap <Leader>g :Gstatus<CR>
 nnoremap <Leader>c :Gread<CR>
+
+" Ruby extensions
+au BufRead,BufNewFile *.ru setfiletype ruby
+au BufRead,BufNewFile *.god setfiletype ruby
 
 set t_Co=256
