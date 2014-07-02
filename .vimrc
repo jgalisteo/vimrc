@@ -72,6 +72,8 @@ set nrformats=                  " make <C-a> and <C-x> play well with
                                 "    zero-padded numbers (i.e. don't consider
                                 "    them octal or hex)
 
+set clipboard=unnamedplus       " copy/paste from clipboard
+
 " Thanks to Steve Losh for this liberating tip
 " See http://stevelosh.com/blog/2010/09/coming-home-to-vim
 nnoremap / /\v
@@ -594,5 +596,7 @@ nnoremap <Leader>c :Gread<CR>
 " Ruby extensions
 au BufRead,BufNewFile *.ru setfiletype ruby
 au BufRead,BufNewFile *.god setfiletype ruby
+
+let g:syntastic_ruby_exec = 'ruby'
 
 set t_Co=256
